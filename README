@@ -1,0 +1,2 @@
+run with:
+mvn exec:java -Dexec.mainClass="com.kenny.secretsanta.Main"
