@@ -2,9 +2,7 @@ package com.kenny.secretsanta;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -66,6 +64,31 @@ public class AssignerTest{
             assigned.add(p.getSecretSanta());
         }
         assertEquals(new HashSet(persons), new HashSet(assigned));
+    }
+
+    @Test
+    public void testRulesPreventAssignment(){
+        Person p = new Person();
+        p.setName("Dad");
+        Person p2 = new Person();
+        p2.setName("Mom");
+        Person p3 = new Person();
+        p3.setName("Daughter");
+
+        Map<Integer, Person> dadHistory = new HashMap<>();
+        dadHistory.put(2017, p2);
+        dadHistory.put(2016, p3);
+        p.setHistory(dadHistory);
+
+        List<Person> persons = Arrays.asList(p, p2, p3);
+        try{
+            new Assigner().assign(persons);
+        }catch(Exception e){
+            assertEquals("Could not find a secret santa for person: Dad. " +
+                    "This may be due to too strict of rules.", e.getMessage());
+            return;
+        }
+        fail("Expected exception not thrown!");
     }
 
 }

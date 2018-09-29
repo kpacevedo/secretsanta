@@ -29,6 +29,11 @@ public class Assigner {
                     candidate.setAssigned(true);
                     break;
                 }
+
+                if(j == candidates.size() -1){
+                    throw new Exception("Could not find a secret santa for person: "+thisPerson.getName()+". " +
+                            "This may be due to too strict of rules.");
+                }
             }
         }
     }
