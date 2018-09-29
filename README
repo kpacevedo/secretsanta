@@ -1,2 +1,4 @@
 run with:
 mvn exec:java -Dexec.mainClass="com.kenny.secretsanta.Main"
+
+git tags: part1tag part2tag part3tag
