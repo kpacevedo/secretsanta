@@ -1,5 +1,6 @@
 package com.kenny.secretsanta;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +17,15 @@ public class Person {
     //realistically this would be stored in some sort of table
     private Map<Integer, Person> history;
 
-    private List<Rule> rules = Arrays.asList(new ThreeYearRule());
+    public final static List<Rule> rules = Arrays.asList(new ThreeYearRule(), new ImmediateFamilyRule());
+
+    //simplistic way of representing immediate family
+    //reallistically this would be stored in some sort of table
+    private List<Person> immediateFamily = new ArrayList<>();
+
+    public List<Person> getImmediateFamily() {
+        return immediateFamily;
+    }
 
     public Map<Integer, Person> getHistory() {
         return history;

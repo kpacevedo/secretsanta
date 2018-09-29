@@ -53,4 +53,11 @@ public class PersonTest {
         assertNull(p.getSecretSanta());
     }
 
+    @Test
+    public void testGetRules(){
+        assertEquals(2, Person.rules.size());
+        assertTrue(Person.rules.get(0) instanceof ThreeYearRule);
+        assertTrue(Person.rules.get(1) instanceof ImmediateFamilyRule);
+    }
+
 }

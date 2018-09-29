@@ -1,9 +1,6 @@
 package com.kenny.secretsanta;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Main{
 
@@ -22,18 +19,31 @@ public class Main{
         Person cousin = new Person();
         cousin.setName("Cousin");
 
+        Person uncle2 = new Person();
+        uncle2.setName("Uncle 2");
+        Person grandfather = new Person();
+        grandfather.setName("Grandfather");
+        Person otherCousin = new Person();
+        otherCousin.setName("Other cousin");
+        Person otherCousin2 = new Person();
+        otherCousin2.setName("Other cousin 2");
+        Person otherCousin3 = new Person();
+        otherCousin3.setName("Other cousin 3");
+
         Map<Integer, Person> momHistory = new HashMap<>();
         momHistory.put(2017, uncle);
         momHistory.put(2016, aunt);
         momHistory.put(2015, daughter);
 
+        mom.getImmediateFamily().add(dad);
+        mom.getImmediateFamily().add(daughter);
+        dad.getImmediateFamily().add(daughter);
+        uncle.getImmediateFamily().add(aunt);
+        uncle.getImmediateFamily().add(cousin);
+        aunt.getImmediateFamily().add(cousin);
 
-        persons.add(mom);
-        persons.add(dad);
-        persons.add(daughter);
-        persons.add(uncle);
-        persons.add(aunt);
-        persons.add(cousin);
+        persons = Arrays.asList(mom, dad, daughter, uncle, aunt, cousin, uncle2, grandfather, otherCousin, otherCousin2,
+                otherCousin3);
 
         new Assigner().assign(persons);
         for(Person p : persons){
